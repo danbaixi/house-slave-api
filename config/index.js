@@ -1,6 +1,6 @@
 const base = {
-  BASE_URL: "http://dgfc.dg.gov.cn/dgwebsite_v2",
-  CACHE_EXPIRED: 300
+  BASE_URL: "http://dgfc.dg.gov.cn/dgwebsite_v2", // 数据来源
+  CACHE_EXPIRED: 300 // 缓存默认时间（秒）
 };
 
 // 开发环境
