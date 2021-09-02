@@ -104,6 +104,9 @@ function curlContract(url) {
 
 // 存储redis
 function saveRedis(key, value, exp = config.CACHE_EXPIRED) {
+  if (value == '' || value.length == 0) {
+    return
+  }
   return redis.set(key, JSON.stringify(value), "EX", exp);
 }
 
@@ -138,10 +141,12 @@ async function getTodayDataForTown() {
   const type = "today_town";
   const $ = await curl(type);
   const list = [];
+  console.log(`$: ${$}`)
   $("#VSD1_resultTable tbody tr")
     .not(".tHead")
     .map((i, el) => {
       const tr = $(el).children();
+      console.log(`town tr: ${tr}`)
       list.push({
         name: trim($(tr[0]).text().replace('东莞市','')),
         hourseCount: trim($(tr[1]).text()),
