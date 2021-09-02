@@ -49,7 +49,7 @@ class Api {
       }
       ctx.body = fail();
     } catch (error) {
-      // console.error(error)
+      console.error(error)
       ctx.body = fail(error.message || "获取失败");
     }
   }

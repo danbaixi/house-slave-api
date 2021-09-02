@@ -28,7 +28,6 @@ function curl(type) {
         console.error(`curl ${type} err: ${err}`)
         return reject(err);
       }
-      console.log(`curl type content: ${res.text}`)
       return resolve(cheerio.load(res.text));
     });
   });
