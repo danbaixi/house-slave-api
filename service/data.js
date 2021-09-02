@@ -141,7 +141,8 @@ async function getTodayDataForTown() {
   const type = "today_town";
   const $ = await curl(type);
   const list = [];
-  console.log($("#VSD1_resultTable").text())
+  console.log($("#VSD1_resultTable tbody"))
+  console.log($("#VSD1_resultTable tbody tr").length)
   $("#VSD1_resultTable tbody tr")
     .not(".tHead")
     .map((i, el) => {
