@@ -25,8 +25,10 @@ function curl(type) {
   return new Promise((resolve, reject) => {
     superagent.get(url).end((err, res) => {
       if (err) {
+        console.error(`curl ${type} err: ${err}`)
         return reject(err);
       }
+      console.log(`curl type content: ${res.text}`)
       return resolve(cheerio.load(res.text));
     });
   });
