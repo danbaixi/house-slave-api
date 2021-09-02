@@ -48,7 +48,7 @@ function curlNewHourse(form) {
         }
         const list = [];
         const $ = cheerio.load(res.text);
-        $("#resultTable tbody tr")
+        $("#resultTable tr")
           .not(".tHead")
           .map((i, el) => {
             const td = $(el).children();
@@ -75,7 +75,7 @@ function curlProjectInfo(url) {
           return reject(err);
         }
         const $ = cheerio.load(res.text);
-        $(".resultTable2 tbody tr").map((i, el) => {
+        $(".resultTable2 tr").map((i, el) => {
           info.push({
             key: trim($(el).find(".td0").text().replace(/：/g, "")),
             value: trim($(el).find(".td1").text()),
@@ -277,7 +277,7 @@ async function getProjectInfo(url) {
     all: [],
   };
   // 项目明细
-  $("#content_1 tbody tr")
+  $("#content_1 tr")
     .not(".tHead")
     .map((i, el) => {
       const td = $(el).children("td");
@@ -292,7 +292,7 @@ async function getProjectInfo(url) {
       });
     });
   // project
-  $("#content_2 tbody tr")
+  $("#content_2 tr")
     .not(".tHead")
     .map((i, el) => {
       data.project.push({
@@ -301,7 +301,7 @@ async function getProjectInfo(url) {
       });
     });
   // developer
-  $("#content_4 tbody tr")
+  $("#content_4 tr")
     .not(".tHead")
     .map((i, el) => {
       data.developer.push({
@@ -310,7 +310,7 @@ async function getProjectInfo(url) {
       });
     });
   // all
-  $("#content_6 tbody tr")
+  $("#content_6 tr")
     .not(".tHead")
     .map((i, el) => {
       const td = $(el).children();
@@ -341,7 +341,7 @@ async function getRoomInfo(url) {
   const $ = await curl(type);
   const list = [];
   let row = {};
-  $("#roomTable > tbody > tr").each((i, el) => {
+  $("#roomTable > tr").each((i, el) => {
     if (i == 0){
       return
     }
