@@ -141,13 +141,10 @@ async function getTodayDataForTown() {
   const type = "today_town";
   const $ = await curl(type);
   const list = [];
-  console.log($("#VSD1_resultTable tbody"))
-  console.log($("#VSD1_resultTable tbody tr").length)
-  $("#VSD1_resultTable tbody tr")
+  $("#VSD1_resultTable tr")
     .not(".tHead")
     .map((i, el) => {
       const tr = $(el).children();
-      console.log(`town tr: ${tr}`)
       list.push({
         name: trim($(tr[0]).text().replace('东莞市','')),
         hourseCount: trim($(tr[1]).text()),
@@ -170,7 +167,7 @@ async function getTodayDataForProject() {
   const type = "today_project";
   const $ = await curl(type);
   const list = [];
-  $("#resultTable tbody tr")
+  $("#resultTable tr")
     .not(".tHead")
     .each((i, el) => {
       const td = $(el).children();
