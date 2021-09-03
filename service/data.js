@@ -341,7 +341,7 @@ async function getRoomInfo(url) {
   const $ = await curl(type);
   const list = [];
   let row = {};
-  $("#roomTable > tr").each((i, el) => {
+  $("#roomTable > tbody > tr").each((i, el) => {
     if (i == 0){
       return
     }
