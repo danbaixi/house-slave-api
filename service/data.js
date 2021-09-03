@@ -237,9 +237,14 @@ async function searchNewHouse(
 ) {
   // 判断是否有缓存
   const cacheKey = `search_${townName}_${usage}`
-  const cache = await redis.get(cacheKey)
-  if (cache) {
-    return JSON.parse(cache)
+  let useCache = false
+  // 详细搜索不走缓存
+  if (projectName == '' && projectSite == '' && developer == '' && areaMin == '' && areaMax == '') {
+    useCache = true
+    const cache = await redis.get(cacheKey)
+    if (cache) {
+      return JSON.parse(cache)
+    }
   }
   const params = await getSearchFormParams();
   const { __VIEWSTATE, __EVENTVALIDATION } = params;
@@ -260,7 +265,9 @@ async function searchNewHouse(
     pageIndex: 0,
   };
   const result = await curlNewHourse(form);
-  saveRedis(cacheKey, result)
+  if (useCache) {
+    saveRedis(cacheKey, result)
+  }
   return result;
 }
 
