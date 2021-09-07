@@ -15,9 +15,9 @@
 
 项目前后端均开源：
 
-前端项目：https://github.com/danbaixi/hourse-slave
+前端项目：https://github.com/danbaixi/house-slave
 
-后端项目(当前)：https://github.com/danbaixi/hourse-slave-api
+后端项目(当前)：https://github.com/danbaixi/house-slave-api
 
 ## 如何开发
 
@@ -26,7 +26,7 @@
 1. 克隆此项目
 
 ```shell
-git clone git@github.com:danbaixi/hourse-slave-api.git
+git clone git@github.com:danbaixi/house-slave-api.git
 ```
 
 2. 安装依赖
@@ -49,7 +49,7 @@ npm run dev
 
 请认真阅读并遵守以下开源协议
 
-`GPL` [GNU General Public License v3.0](https://github.com/danbaixi/hourse-slave-api/blob/main/LICENSE)
+`GPL` [GNU General Public License v3.0](https://github.com/danbaixi/house-slave-api/blob/main/LICENSE)
 
 本项目仅用于学习交流，禁止商用，违者必究。
 
