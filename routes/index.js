@@ -10,5 +10,6 @@ router.get('/', async (ctx, next) => {
 router.get('/getFormParams', api.getFormParams)
 router.get('/getData', api.getData)
 router.post('/search', api.search)
+router.get('/getGuidePrice', api.getGuidePrice)
 
 module.exports = router

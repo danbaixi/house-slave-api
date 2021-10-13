@@ -10,6 +10,7 @@
   "dependencies": {
     "cheerio": "*",
     "debug": "^4.1.1",
+    "exceljs": "^4.3.0",
     "ioredis": "^4.27.8",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",

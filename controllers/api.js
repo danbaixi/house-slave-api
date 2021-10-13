@@ -2,13 +2,14 @@ const data = require("../service/data");
 const { success, fail, formatKey } = require("../service/tool");
 const redis = require("../service/redis");
 const { types } = require("../service/constant");
+const getGuidePrice = require("../service/guide");
 
 class Api {
   static async getData(ctx) {
     // type 数据类型
     // url 页面链接
     let { type, url } = ctx.query;
-    url = url ? decodeURIComponent(url) : '';
+    url = url ? decodeURIComponent(url) : "";
     // 获取缓存
     try {
       let cacheKey = type;
@@ -49,27 +50,28 @@ class Api {
       }
       ctx.body = fail();
     } catch (error) {
-      console.error(error)
+      console.error(error);
       ctx.body = fail(error.message || "获取失败");
     }
   }
 
   static async getFormParams(ctx) {
     try {
-      const cacheKey = 'form_params'
+      const cacheKey = "form_params";
       const cache = await redis.get(cacheKey);
       if (cache) {
         ctx.body = success(JSON.parse(cache));
         return;
       }
-      const result = await data.getSearchFormParams()
-      ctx.body = success(result)
+      const result = await data.getSearchFormParams();
+      ctx.body = success(result);
     } catch (error) {
       console.error(error);
       ctx.body = fail(error.message || "获取失败");
     }
   }
 
+  // 搜索房源
   static async search(ctx) {
     try {
       const {
@@ -99,6 +101,20 @@ class Api {
         areaMax
       );
       if (result !== false) {
+        ctx.body = success(result);
+        return;
+      }
+      ctx.body = fail();
+    } catch (error) {
+      ctx.body = fail(error.message || "查询失败");
+    }
+  }
+
+  // 获取二手房参考价
+  static async getGuidePrice(ctx) {
+    try {
+      const result = await getGuidePrice();
+      if (result) {
         ctx.body = success(result);
         return;
       }
